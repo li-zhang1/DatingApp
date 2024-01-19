@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Helpers;
+using CloudinaryDotNet.Actions;
 
 namespace API.Controllers;
 
@@ -27,6 +28,7 @@ public class UsersController : BaseApiController
         _userRepository = userRepository;
     }
 
+
     [HttpGet]
     public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
     {
@@ -42,6 +44,7 @@ public class UsersController : BaseApiController
         users.TotalCount, users.TotalPages));
         return Ok(users);
     }
+
 
     [HttpGet("{username}")]
     public async Task<ActionResult<MemberDto>> GetUser(string username)
